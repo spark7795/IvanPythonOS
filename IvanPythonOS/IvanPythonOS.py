@@ -1,39 +1,37 @@
 import random
-############################# ����� ���������� ����� � ��������
+############################# Введём размер матрицы
 rows=int(input('Size of matrix: '))
-############################# ����������� ������ ��������� �������
+############################# Введем пороговое значение для суммы
 treshold=int(input("Input treshold: "))
-#r=random.randint(1,100)
+ 
 mas = []
-nec_mas=[]
+necmas=[]
+############################# Сгенерируем массив
 for i in range(rows):
     mas.append([])
     for j in range(rows):
         r = random.randint(1,100)  
         mas[i].append(r)
-       
+     
 sum=0
-masn=1
-output=0
 x=0
+############################# Выведем сгенерированный массив
 print("Show us a randomized array")
 for i in range(rows):
     print(mas[i], "\n")
+############################# Приступим к сортировке
 print("Let's start to view necessary arrays")
+necmas.append([])
 for i in range(rows):
-     nec_mas.append([])
      for j in range(rows):
-        if(output==1):
-            print("Array #",nec_mas,": ", end='')
         if(sum<treshold or sum==treshold):
-            nec_mas[x].append(mas[i][j])
-            output=0
+            necmas[x].append(mas[i][j])
             sum=sum+mas[i][j]
-            print(mas[i][j]," ", end='' )
         else:
+            necmas.append([])
             x=x+1
-            print("\nSum: ", sum);
-            print("====================")
-            #masn=masn+1
-            sum=0
-            output=1
+            print("Array #", x,": ", necmas[x-1])
+            print("Sum: ", sum)
+            print("=====================")
+            sum=mas[i][j]
+            necmas[x].append(mas[i][j])
